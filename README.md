@@ -2,7 +2,7 @@
 ## mnist intro to machine learning
 ### Train model with command:
 ```
-python train.py -p <save_dir_path>
+python train.py -p <save_dir_path> -e <num_epochs> -b <batch_size> -l <learning_rate>
 ```
 ### Then run it wih command:
 ```
