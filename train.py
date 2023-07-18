@@ -1,9 +1,12 @@
+import argparse
+import os
+
 import torch
 import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
 
-from neuralnet import NeuralNet, input_size, hidden_size, num_classes
+from neuralnet import NeuralNet, hidden_size, input_size, num_classes
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -54,5 +57,13 @@ for epoch in range(num_epochs):
                 f'Epoch [{(epoch+1)}/{(num_epochs)}], step [{(i+1)}/{(n_total_steps)}], Loss {loss.item()}')
 
 print('Finished training')
-PATH = './model/model.pth'
-torch.save(model.state_dict(), PATH)
+
+parser = argparse.ArgumentParser(description='recognize handwritten digits')
+parser.add_argument('-p', '--path', default='model',
+                    type=str, help='save directory')
+args = parser.parse_args()
+
+PATH = args.path
+if not os.path.exists(PATH):
+    os.mkdir(PATH)
+torch.save(model.state_dict(), os.path.join(PATH, 'model.pth'))
