@@ -11,10 +11,22 @@ from neuralnet import NeuralNet, hidden_size, input_size, num_classes
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+
+parser = argparse.ArgumentParser(description='recognize handwritten digits')
+parser.add_argument('-p', '--path', default='model',
+                    type=str, help='save directory path')
+parser.add_argument('-e', '--num_epochs', default=10,
+                    type=int, help='number of epochs')
+parser.add_argument('-b', '--batch_size', default=100,
+                    type=int, help='batch size')
+parser.add_argument('-l', '--learning_rate', default=0.001,
+                    type=float, help='learning rate')
+args = parser.parse_args()
+
 # Hyper_parameters
-num_epochs = 10
-batch_size = 100
-learning_rate = 0.001
+num_epochs = args.num_epochs
+batch_size = args.batch_size
+learning_rate = args.learning_rate
 
 # MNIST train dataset
 train_dataset = torchvision.datasets.MNIST(root='./data',
@@ -57,11 +69,6 @@ for epoch in range(num_epochs):
                 f'Epoch [{(epoch+1)}/{(num_epochs)}], step [{(i+1)}/{(n_total_steps)}], Loss {loss.item()}')
 
 print('Finished training')
-
-parser = argparse.ArgumentParser(description='recognize handwritten digits')
-parser.add_argument('-p', '--path', default='model',
-                    type=str, help='save directory path')
-args = parser.parse_args()
 
 PATH = args.path
 if not os.path.exists(PATH):
