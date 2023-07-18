@@ -60,7 +60,7 @@ print('Finished training')
 
 parser = argparse.ArgumentParser(description='recognize handwritten digits')
 parser.add_argument('-p', '--path', default='model',
-                    type=str, help='save directory')
+                    type=str, help='save directory path')
 args = parser.parse_args()
 
 PATH = args.path
