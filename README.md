@@ -1,4 +1,4 @@
-# Handwritten-Digits-Recognizer
+# Handwritten Digits Recognizer
 ## mnist intro to machine learning
 ### Install requirements with command:
 ```
