@@ -8,7 +8,7 @@ pip install -r requirements.txt
 ```
 python train.py -p <save_dir_path> -e <num_epochs> -b <batch_size> -l <learning_rate>
 ```
-### Then run it wih command:
+### Then run it with command:
 ```
 python main.py -p <model_path>
 ```
