@@ -17,3 +17,4 @@ python main.py -p <model_path>
 python train.py
 python main.py
 ```
+![ezgif-1-bedbd66e63](https://github.com/user-attachments/assets/0489ad99-6f12-4935-a809-96ff0e7d2ee0)
